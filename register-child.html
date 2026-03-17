@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دِبرة | استمارة تسجيل طفل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="form-style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="form-header">
+    <div class="form-header-inner">
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-right"></i> العودة للموقع</a>
+      <a href="index.html"><img src="images/logo.png" alt="دِبرة" class="form-logo" /></a>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <div class="form-banner">
+    <div class="form-banner-content">
+      <div class="form-banner-icon"><i class="fas fa-baby"></i></div>
+      <div>
+        <h1>استمارة تسجيل طفل</h1>
+        <p>يرجى تعبئة جميع الحقول المطلوبة بدقة لضمان أفضل رعاية لطفلكم</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+
+    <!-- PRICE TABLE -->
+    <div class="price-table-card">
+      <h3><i class="fas fa-table"></i> جدول أسعار الاشتراك</h3>
+      <div class="table-wrapper">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>نوع الاشتراك</th>
+              <th>عدد الساعات</th>
+              <th>المبلغ (ريال)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>باقة رمضان</td><td>2 ساعتان</td><td>200</td></tr>
+            <tr><td>يومي</td><td>4 ساعات</td><td>350</td></tr>
+            <tr><td>يومي</td><td>8 ساعات</td><td>600</td></tr>
+            <tr><td>أسبوعي</td><td>4 ساعات</td><td>2,000</td></tr>
+            <tr><td>أسبوعي</td><td>8 ساعات</td><td>2,800</td></tr>
+            <tr><td>شهري</td><td>4 ساعات</td><td>7,000</td></tr>
+            <tr><td>شهري</td><td>8 ساعات</td><td>14,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note">* باقة رمضان: ساعتان يومياً طوال شهر رمضان</p>
+    </div>
+
+    <form id="childForm" novalidate>
+
+      <!-- القسم 1: معلومات ولي الأمر -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-user"></i></div>
+          <h2>المعلومات الأولية — ولي الأمر</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>اسم الأب أو الأم رباعياً <span class="req">*</span></label>
+            <input type="text" name="parentName" placeholder="أدخل الاسم الرباعي" required />
+          </div>
+          <div class="field-group">
+            <label>رقم الهوية <span class="req">*</span></label>
+            <input type="text" name="idNumber" placeholder="رقم الهوية الوطنية" required />
+          </div>
+          <div class="field-group">
+            <label>الجنسية <span class="req">*</span></label>
+            <input type="text" name="nationality" placeholder="الجنسية" required />
+          </div>
+          <div class="field-group">
+            <label>رقم الجوال <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="05XXXXXXXX" dir="ltr" required />
+          </div>
+          <div class="field-group full">
+            <label>البريد الإلكتروني <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="example@email.com" dir="ltr" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 2: بيانات الطفل -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-baby"></i></div>
+          <h2>البيانات الأولية للطفل</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>اسم الطفل رباعياً <span class="req">*</span></label>
+            <input type="text" name="childName" placeholder="اسم الطفل الرباعي" required />
+          </div>
+          <div class="field-group">
+            <label>رقم هوية الطفل <span class="req">*</span></label>
+            <input type="text" name="childId" placeholder="رقم هوية الطفل" required />
+          </div>
+          <div class="field-group">
+            <label>العمر <span class="req">*</span></label>
+            <input type="text" name="childAge" placeholder="عمر الطفل" required />
+          </div>
+          <div class="field-group">
+            <label>جنسية الطفل <span class="req">*</span></label>
+            <input type="text" name="childNationality" placeholder="جنسية الطفل" required />
+          </div>
+          <div class="field-group">
+            <label>أرقام أخرى للطوارئ <span class="req">*</span></label>
+            <input type="tel" name="emergencyPhone" placeholder="رقم الطوارئ" dir="ltr" required />
+          </div>
+          <div class="field-group full">
+            <label>عنوان المنزل <span class="req">*</span></label>
+            <input type="text" name="address" placeholder="الحي، الشارع، رقم المبنى" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 3: البيانات الصحية -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-heartbeat"></i></div>
+          <h2>البيانات الصحية للطفل</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>هل يعاني الطفل من أمراض صحية أو مزمنة؟ <span class="req">*</span></label>
+            <select name="hasMedicalConditions" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group" id="medicalDetailsGroup" style="display:none;">
+            <label>تفاصيل الحالة الصحية</label>
+            <textarea name="medicalDetails" rows="3" placeholder="يرجى ذكر تفاصيل الحالة الصحية"></textarea>
+          </div>
+          <div class="field-group">
+            <label>هل يتناول أدوية؟ <span class="req">*</span></label>
+            <select name="hasMedications" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group" id="medicationDetailsGroup" style="display:none;">
+            <label>تفاصيل الأدوية</label>
+            <textarea name="medicationDetails" rows="3" placeholder="اذكر الأدوية وطريقة استخدامها"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 4: البيانات الأسرية -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-home"></i></div>
+          <h2>البيانات الأسرية والتربوية</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>عدد الإخوة <span class="req">*</span></label>
+            <input type="number" name="brothersCount" placeholder="عدد الإخوة" min="0" required />
+          </div>
+          <div class="field-group">
+            <label>جنس الإخوة <span class="req">*</span></label>
+            <select name="brothersGender" required>
+              <option value="">اختر...</option>
+              <option value="ذكور">ذكور</option>
+              <option value="إناث">إناث</option>
+              <option value="مختلط">مختلط</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>ترتيب الطفل بين إخوته <span class="req">*</span></label>
+            <input type="text" name="childOrder" placeholder="مثال: الأول، الثاني..." required />
+          </div>
+          <div class="field-group">
+            <label>يعيش مع <span class="req">*</span></label>
+            <select name="livingWith" required>
+              <option value="">اختر...</option>
+              <option value="الوالدين">الوالدين</option>
+              <option value="الأم فقط">الأم فقط</option>
+              <option value="الأب فقط">الأب فقط</option>
+              <option value="الجدة">الجدة</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>المستوى التعليمي <span class="req">*</span></label>
+            <select name="educationLevel" required>
+              <option value="">اختر...</option>
+              <option value="لم يلتحق بالمدرسة بعد">لم يلتحق بالمدرسة بعد</option>
+              <option value="روضة">روضة</option>
+              <option value="ابتدائي">ابتدائي</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل يعرف المهارات الأساسية؟ <span class="req">*</span></label>
+            <select name="knowsBasicSkills" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+              <option value="جزئياً">جزئياً</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>مستوى اللغة <span class="req">*</span></label>
+            <select name="languageLevel" required>
+              <option value="">اختر...</option>
+              <option value="ممتاز">ممتاز</option>
+              <option value="جيد">جيد</option>
+              <option value="محدود">محدود</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل هو مستقل؟ <span class="req">*</span></label>
+            <select name="isIndependent" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+              <option value="جزئياً">جزئياً</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل يتبع التعليمات؟ <span class="req">*</span></label>
+            <select name="followsInstructions" required>
+              <option value="">اختر...</option>
+              <option value="دائماً">دائماً</option>
+              <option value="أحياناً">أحياناً</option>
+              <option value="نادراً">نادراً</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>إدارة المشاعر <span class="req">*</span></label>
+            <select name="emotionManagement" required>
+              <option value="">اختر...</option>
+              <option value="جيدة">جيدة</option>
+              <option value="متوسطة">متوسطة</option>
+              <option value="تحتاج دعم">تحتاج دعم</option>
+            </select>
+          </div>
+          <div class="field-group full">
+            <label>المخاوف والحساسيات النفسية <span class="req">*</span></label>
+            <textarea name="fears" rows="2" placeholder="مثال: الخوف من الصوت العالي، الظلام..." required></textarea>
+          </div>
+          <div class="field-group full">
+            <label>الهوايات والميول <span class="req">*</span></label>
+            <textarea name="hobbies" rows="2" placeholder="مثال: الرسم، اللعب بالمكعبات..." required></textarea>
+          </div>
+          <div class="field-group full">
+            <label>ملاحظات أخرى</label>
+            <textarea name="otherNotes" rows="3" placeholder="أي ملاحظات إضافية تودّ الإشارة إليها"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 5: الاشتراك -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-calendar-check"></i></div>
+          <h2>اشتراك الطفل</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>نوع الاشتراك <span class="req">*</span></label>
+            <select name="subscriptionType" required>
+              <option value="">اختر نوع الاشتراك</option>
+              <option value="باقة رمضان">باقة رمضان (2 ساعتان)</option>
+              <option value="يومي">يومي</option>
+              <option value="أسبوعي">أسبوعي</option>
+              <option value="شهري">شهري</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>عدد الساعات <span class="req">*</span></label>
+            <select name="hoursCount" required>
+              <option value="">اختر عدد الساعات</option>
+              <option value="2 ساعتان">2 ساعتان</option>
+              <option value="4 ساعات">4 ساعات</option>
+              <option value="8 ساعات">8 ساعات</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>تاريخ بدء الاشتراك <span class="req">*</span></label>
+            <input type="date" name="startDate" dir="ltr" required />
+          </div>
+          <div class="field-group">
+            <label>ساعة البدء <span class="req">*</span></label>
+            <input type="time" name="startTime" dir="ltr" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- المرفقات -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-paperclip"></i></div>
+          <h2>المرفقات المطلوبة <span class="req">*</span></h2>
+        </div>
+        <div class="attachments-hint">
+          <strong>الأوراق المطلوبة:</strong>
+          <ol>
+            <li>صورة هوية الأم والأب</li>
+            <li>صورة من سجل الأسرة موضّحاً فيها بيانات الطفل</li>
+            <li>صورة العنوان الوطني</li>
+          </ol>
+        </div>
+        <div class="upload-area" id="childUploadArea" onclick="document.getElementById('childFiles').click()">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>انقر لرفع الملفات</p>
+          <span>PDF, JPG, PNG — الحجم الأقصى 10MB لكل ملف</span>
+          <input type="file" id="childFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.webp" style="display:none" onchange="handleFiles(this, 'childFileList')" />
+        </div>
+        <div id="childFileList" class="file-list"></div>
+      </div>
+
+      <!-- الإقرار -->
+      <div class="consent-box">
+        <i class="fas fa-exclamation-circle"></i>
+        <div>
+          <p>بإرسال هذه الاستمارة، يُقرّ ولي أمر الطفل بصحة المعلومات المدخلة، ويُعتبر التوقيع والوضع صحّ إقراراً على صحة البيانات.</p>
+          <label class="consent-check">
+            <input type="checkbox" id="childConsent" />
+            <span>أقرّ بصحة جميع المعلومات المدخلة أعلاه</span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> إرسال استمارة تسجيل الطفل
+      </button>
+    </form>
+
+    <!-- شاشة الشكر -->
+    <div id="thankYouChild" class="thank-you" style="display:none;">
+      <div class="thank-you-icon"><i class="fas fa-check-circle"></i></div>
+      <h2>شكراً لثقتكم بدِبرة</h2>
+      <div class="thank-you-msg">
+        <p class="bold">تم استلام طلب تسجيلكم بنجاح</p>
+        <p>يسعدنا انضمامكم إلى عائلة دِبرة. سيتواصل معكم فريقنا المتخصص في أقرب وقت لتأكيد التسجيل وترتيب التفاصيل.</p>
+      </div>
+      <div class="thank-you-contacts">
+        <span><i class="fas fa-phone"></i> +966535977511</span>
+        <span><i class="fas fa-phone"></i> 0115127699</span>
+      </div>
+      <div class="thank-you-btns">
+        <button onclick="resetForm('childForm','thankYouChild')" class="btn-secondary">تسجيل طفل آخر</button>
+        <a href="index.html" class="btn-primary">العودة للموقع</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="form-footer">
+    <img src="images/logo.png" alt="دِبرة" />
+    <p>المملكة العربية السعودية — الرياض</p>
+    <div class="footer-contacts">
+      <span>+966535977511</span>
+      <span>0115127699</span>
+    </div>
+    <p class="footer-email">debrhalaelh@gmail.com</p>
+    <p class="footer-copy">© 2025 دِبرة العائلة — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/966535977511" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="form-script.js"></script>
+  <script>
+    // إظهار/إخفاء حقل التفاصيل الصحية
+    document.querySelector('[name="hasMedicalConditions"]').addEventListener('change', function() {
+      document.getElementById('medicalDetailsGroup').style.display = this.value === 'نعم' ? 'flex' : 'none';
+    });
+    document.querySelector('[name="hasMedications"]').addEventListener('change', function() {
+      document.getElementById('medicationDetailsGroup').style.display = this.value === 'نعم' ? 'flex' : 'none';
+    });
+
+    document.getElementById('childForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!document.getElementById('childConsent').checked) {
+        alert('يرجى الموافقة على صحة البيانات أولاً');
+        return;
+      }
+      if (document.getElementById('childFileList').children.length === 0) {
+        alert('يرجى إرفاق الأوراق المطلوبة');
+        return;
+      }
+      this.style.display = 'none';
+      document.getElementById('thankYouChild').style.display = 'block';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>

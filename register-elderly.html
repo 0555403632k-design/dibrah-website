@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دِبرة | استمارة تسجيل كبيرة السن</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="form-style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="form-header">
+    <div class="form-header-inner">
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-right"></i> العودة للموقع</a>
+      <a href="index.html"><img src="images/logo.png" alt="دِبرة" class="form-logo" /></a>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <div class="form-banner elderly-banner">
+    <div class="form-banner-content">
+      <div class="form-banner-icon"><i class="fas fa-heart"></i></div>
+      <div>
+        <h1>استمارة تسجيل كبيرة السن</h1>
+        <p>يرجى تعبئة جميع الحقول المطلوبة بدقة لضمان أفضل رعاية لوالدتكم</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+
+    <!-- PRICE TABLE -->
+    <div class="price-table-card">
+      <h3><i class="fas fa-table"></i> جدول أسعار الاشتراك</h3>
+      <div class="table-wrapper">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>نوع الاشتراك</th>
+              <th>عدد الساعات</th>
+              <th>المبلغ (ريال)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>باقة رمضان</td><td>2 ساعتان</td><td>200</td></tr>
+            <tr><td>يومي</td><td>4 ساعات</td><td>350</td></tr>
+            <tr><td>يومي</td><td>8 ساعات</td><td>600</td></tr>
+            <tr><td>أسبوعي</td><td>4 ساعات</td><td>2,000</td></tr>
+            <tr><td>أسبوعي</td><td>8 ساعات</td><td>2,800</td></tr>
+            <tr><td>شهري</td><td>4 ساعات</td><td>7,000</td></tr>
+            <tr><td>شهري</td><td>8 ساعات</td><td>14,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note">* باقة رمضان: ساعتان يومياً طوال شهر رمضان</p>
+    </div>
+
+    <form id="elderlyForm" novalidate>
+
+      <!-- القسم 1: معلومات المشترك -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-user"></i></div>
+          <h2>المعلومات الأولية — المشترك</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>اسم المشترك <span class="req">*</span></label>
+            <input type="text" name="subscriberName" placeholder="اسم المشترك" required />
+          </div>
+          <div class="field-group">
+            <label>رقم الهوية <span class="req">*</span></label>
+            <input type="text" name="idNumber" placeholder="رقم الهوية الوطنية" required />
+          </div>
+          <div class="field-group">
+            <label>الجنسية <span class="req">*</span></label>
+            <input type="text" name="nationality" placeholder="الجنسية" required />
+          </div>
+          <div class="field-group">
+            <label>رقم الجوال <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="05XXXXXXXX" dir="ltr" required />
+          </div>
+          <div class="field-group">
+            <label>البريد الإلكتروني <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="example@email.com" dir="ltr" required />
+          </div>
+          <div class="field-group full">
+            <label>عنوان المنزل <span class="req">*</span></label>
+            <input type="text" name="address" placeholder="الحي، الشارع، رقم المبنى" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 2: بيانات كبيرة السن -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-heart"></i></div>
+          <h2>بيانات كبيرة السن</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>اسم كبيرة السن <span class="req">*</span></label>
+            <input type="text" name="elderlyName" placeholder="اسم كبيرة السن" required />
+          </div>
+          <div class="field-group">
+            <label>عمر كبيرة السن <span class="req">*</span></label>
+            <input type="text" name="elderlyAge" placeholder="العمر" required />
+          </div>
+          <div class="field-group">
+            <label>صلة قرابة المشترك مع كبيرة السن <span class="req">*</span></label>
+            <input type="text" name="relationship" placeholder="مثال: ابنة، زوجة..." required />
+          </div>
+          <div class="field-group">
+            <label>أرقام أخرى للطوارئ <span class="req">*</span></label>
+            <input type="tel" name="emergencyPhone" placeholder="رقم الطوارئ" dir="ltr" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 3: البيانات الصحية -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-heartbeat"></i></div>
+          <h2>البيانات الصحية</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>هل تعاني من أمراض صحية أو مزمنة؟ <span class="req">*</span></label>
+            <select name="hasMedicalConditions" id="elderlyMedical" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group" id="elderlyMedicalDetails" style="display:none;">
+            <label>تفاصيل الحالة الصحية</label>
+            <textarea name="medicalDetails" rows="3" placeholder="يرجى ذكر تفاصيل الحالة الصحية"></textarea>
+          </div>
+          <div class="field-group">
+            <label>هل هناك أدوية تستخدمها؟ <span class="req">*</span></label>
+            <select name="hasMedications" id="elderlyMeds" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group" id="elderlyMedDetails" style="display:none;">
+            <label>تفاصيل الأدوية مع شرح آلية الاستخدام</label>
+            <textarea name="medicationDetails" rows="3" placeholder="اذكر الأدوية وطريقة استخدامها"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 4: التجارب الحياتية -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-hands-helping"></i></div>
+          <h2>التجارب الحياتية</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>مدى تقبّلها للغرباء <span class="req">*</span></label>
+            <select name="acceptsStrangers" required>
+              <option value="">اختر...</option>
+              <option value="تقبل بسهولة">تقبل بسهولة</option>
+              <option value="لديها شعور بالقلق والرفض">لديها شعور بالقلق والرفض</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل تستطيع التعرف على أفراد العائلة؟ <span class="req">*</span></label>
+            <select name="recognizesFamily" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل لديها نظام غذائي معين؟ <span class="req">*</span></label>
+            <select name="hasDiet" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل لديها أدوية يومية؟ <span class="req">*</span></label>
+            <select name="hasDailyMeds" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل لديها مشاكل في السمع والبصر؟ <span class="req">*</span></label>
+            <select name="hasHearingVisionIssues" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل تستخدم أنبوب تنفس أو كرسي متحرك؟ <span class="req">*</span></label>
+            <select name="usesWheelchair" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل تستطيع المشي بمفردها ودخول دورة المياه؟ <span class="req">*</span></label>
+            <select name="canWalkAlone" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>هل لديها نظام نوم معين؟ <span class="req">*</span></label>
+            <select name="hasSleepSchedule" required>
+              <option value="">اختر...</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+          <div class="field-group full">
+            <label>ما الأشياء التي تشعرها بالاطمئنان؟ <span class="req">*</span></label>
+            <textarea name="comfortThings" rows="2" placeholder="اذكر الأشياء التي تريح كبيرة السن" required></textarea>
+          </div>
+          <div class="field-group full">
+            <label>هل يوجد طريقة خاصة تفضّل التعامل معها بها؟ <span class="req">*</span></label>
+            <textarea name="preferredCareMethod" rows="2" placeholder="اذكر طريقة التعامل المفضّلة" required></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- القسم 5: الاشتراك -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-calendar-check"></i></div>
+          <h2>مبلغ الاشتراك</h2>
+        </div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label>نوع الاشتراك <span class="req">*</span></label>
+            <select name="subscriptionType" required>
+              <option value="">اختر نوع الاشتراك</option>
+              <option value="باقة رمضان">باقة رمضان (2 ساعتان)</option>
+              <option value="يومي">يومي</option>
+              <option value="أسبوعي">أسبوعي</option>
+              <option value="شهري">شهري</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>عدد الساعات <span class="req">*</span></label>
+            <select name="hoursCount" required>
+              <option value="">اختر عدد الساعات</option>
+              <option value="2 ساعتان">2 ساعتان</option>
+              <option value="4 ساعات">4 ساعات</option>
+              <option value="8 ساعات">8 ساعات</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>تاريخ بدء الاشتراك <span class="req">*</span></label>
+            <input type="date" name="startDate" dir="ltr" required />
+          </div>
+          <div class="field-group">
+            <label>ساعة البدء <span class="req">*</span></label>
+            <input type="time" name="startTime" dir="ltr" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- المرفقات -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon"><i class="fas fa-paperclip"></i></div>
+          <h2>المرفقات المطلوبة <span class="req">*</span></h2>
+        </div>
+        <div class="attachments-hint">
+          <strong>الأوراق المطلوبة:</strong>
+          <ol>
+            <li>صورة من بطاقة الأحوال</li>
+            <li>صورة العنوان الوطني</li>
+          </ol>
+        </div>
+        <div class="upload-area" onclick="document.getElementById('elderlyFiles').click()">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>انقر لرفع الملفات</p>
+          <span>PDF, JPG, PNG — الحجم الأقصى 10MB لكل ملف</span>
+          <input type="file" id="elderlyFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.webp" style="display:none" onchange="handleFiles(this, 'elderlyFileList')" />
+        </div>
+        <div id="elderlyFileList" class="file-list"></div>
+      </div>
+
+      <!-- الإقرار -->
+      <div class="consent-box">
+        <i class="fas fa-exclamation-circle"></i>
+        <div>
+          <p>بإرسال هذه الاستمارة، يُقرّ المشترك بصحة المعلومات المدخلة، ويُعتبر التوقيع والوضع صحّ إقراراً على صحة البيانات.</p>
+          <label class="consent-check">
+            <input type="checkbox" id="elderlyConsent" />
+            <span>أقرّ بصحة جميع المعلومات المدخلة أعلاه</span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> إرسال استمارة تسجيل كبيرة السن
+      </button>
+    </form>
+
+    <!-- شاشة الشكر -->
+    <div id="thankYouElderly" class="thank-you" style="display:none;">
+      <div class="thank-you-icon"><i class="fas fa-check-circle"></i></div>
+      <h2>شكراً لثقتكم بدِبرة</h2>
+      <div class="thank-you-msg">
+        <p class="bold">تم استلام طلب تسجيلكم بنجاح</p>
+        <p>يسعدنا انضمامكم إلى عائلة دِبرة. سيتواصل معكم فريقنا المتخصص في أقرب وقت لتأكيد التسجيل وترتيب التفاصيل.</p>
+      </div>
+      <div class="thank-you-contacts">
+        <span><i class="fas fa-phone"></i> +966535977511</span>
+        <span><i class="fas fa-phone"></i> 0115127699</span>
+      </div>
+      <div class="thank-you-btns">
+        <button onclick="resetForm('elderlyForm','thankYouElderly')" class="btn-secondary">تسجيل مشترك آخر</button>
+        <a href="index.html" class="btn-primary">العودة للموقع</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="form-footer">
+    <img src="images/logo.png" alt="دِبرة" />
+    <p>المملكة العربية السعودية — الرياض</p>
+    <div class="footer-contacts">
+      <span>+966535977511</span>
+      <span>0115127699</span>
+    </div>
+    <p class="footer-email">debrhalaelh@gmail.com</p>
+    <p class="footer-copy">© 2025 دِبرة العائلة — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/966535977511" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="form-script.js"></script>
+  <script>
+    document.getElementById('elderlyMedical').addEventListener('change', function() {
+      document.getElementById('elderlyMedicalDetails').style.display = this.value === 'نعم' ? 'flex' : 'none';
+    });
+    document.getElementById('elderlyMeds').addEventListener('change', function() {
+      document.getElementById('elderlyMedDetails').style.display = this.value === 'نعم' ? 'flex' : 'none';
+    });
+
+    document.getElementById('elderlyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!document.getElementById('elderlyConsent').checked) {
+        alert('يرجى الموافقة على صحة البيانات أولاً');
+        return;
+      }
+      if (document.getElementById('elderlyFileList').children.length === 0) {
+        alert('يرجى إرفاق الأوراق المطلوبة');
+        return;
+      }
+      this.style.display = 'none';
+      document.getElementById('thankYouElderly').style.display = 'block';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>
