@@ -1144,6 +1144,19 @@ input, select, textarea, button { font-family: var(--font); }
   font-size: 0.88rem;
 }
 .footer-bottom i { color: #e74c3c; }
+.footer-legal-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-legal-links a {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
+  transition: color 0.3s;
+}
+.footer-legal-links a:hover {
+  color: var(--accent-light);
+}
 
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {
