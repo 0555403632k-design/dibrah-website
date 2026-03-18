@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دِبرة | رعاية تنبض بالثقة</title>
+  <meta name="description" content="دِبرة - خدمات رعاية منزلية متكاملة: مرافقة المستشفى، رعاية كبار السن، رعاية الأطفال. كوادر وطنية موثوقة." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <style>
+    /* ===== PAYMENT BUTTON STYLES ===== */
+    .btn-payment {
+      background: linear-gradient(135deg, #228b64, #1a6b4a) !important;
+      color: #fff !important;
+      border: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .btn-payment:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba(34, 139, 100, 0.4) !important;
+    }
+
+    /* ===== PAYMENT SECTION ===== */
+    .payment-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #1a3a2a 0%, #228b64 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .payment-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/pattern.png') center/cover;
+      opacity: 0.05;
+    }
+
+    .payment-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .payment-section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .payment-section-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    .payment-section-content h2 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .payment-section-content p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .payment-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .payment-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+    }
+
+    .payment-feature i {
+      width: 30px;
+      height: 30px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .payment-methods-display {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .payment-methods-display h4 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .payment-methods-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .payment-method-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .payment-method-card:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    .payment-method-card .method-icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .payment-method-card .method-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1a3a2a;
+    }
+
+    .neoleap-trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .neoleap-trust-badge i {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    .neoleap-trust-badge p {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    /* ===== PACKAGE CARD PAYMENT BUTTON ===== */
+    .package-card .btn-pay-now {
+      background: linear-gradient(135deg, #228b64, #1a6b4a);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .package-card .btn-pay-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 139, 100, 0.4);
+    }
+
+    .package-card.featured .btn-pay-now {
+      background: linear-gradient(135deg, #fff, #f0f8f4);
+      color: #228b64;
+    }
+
+    /* ===== BOOKING FORM PAYMENT BUTTON ===== */
+    .booking-form .btn-pay-direct {
+      background: linear-gradient(135deg, #228b64, #1a6b4a);
+      color: #fff;
+      border: none;
+      padding: 16px 30px;
+      border-radius: 12px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .booking-form .btn-pay-direct:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 139, 100, 0.4);
+    }
+
+    .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 15px 0;
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    .form-divider::before,
+    .form-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e8f0ec;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <img src="images/logo.png" alt="دِبرة" class="preloader-logo" />
+      <div class="preloader-spinner"></div>
+    </div>
+  </div>
+
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">
+        <img src="images/logo.png" alt="دِبرة" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#packages">الباقات</a></li>
+        <li><a href="#why-us">لماذا دِبرة</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+        <li><a href="#register" class="nav-register">سجّل الآن</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="/payment" class="btn btn-primary btn-payment"><i class="fas fa-credit-card"></i> ادفع الآن</a>
+        <a href="#book" class="btn btn-outline" style="margin-right: 8px;">احجز الآن</a>
+        <button class="hamburger" id="hamburger" aria-label="قائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="images/bg-waves.png" alt="" class="hero-waves" />
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content" data-aos="fade-right">
+        <span class="hero-badge">رعاية سعودية أصيلة</span>
+        <h1 class="hero-title">دِبْرَة<br /><span>تدبرك</span></h1>
+        <p class="hero-desc">مرافقة آمنة، رعاية موثوقة، وكوادر وطنية مختارة بعناية — لأن راحة عائلتك تستحق الأفضل.</p>
+        <div class="hero-btns">
+          <a href="/payment" class="btn btn-primary btn-lg btn-payment"><i class="fas fa-credit-card"></i> ادفع الآن</a>
+          <a href="#book" class="btn btn-outline btn-lg">احجز الآن</a>
+          <a href="#services" class="btn btn-outline btn-lg">اكتشف خدماتنا</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">+500</span>
+            <span class="stat-label">عميل سعيد</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">كوادر وطنية</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">24/7</span>
+            <span class="stat-label">خدمة متواصلة</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image" data-aos="fade-left">
+        <div class="hero-img-wrapper">
+          <img src="images/hero.png" alt="دِبرة - رعاية موثوقة" />
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <a href="#services"><i class="fas fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+
+  <!-- ===== SERVICES INTRO ===== -->
+  <section class="services-intro" id="services">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">خدماتنا</span>
+        <h2>رعاية متكاملة لكل احتياج</h2>
+        <p>نقدم خدمات رعاية شاملة تجمع بين الاحترافية والدفء الإنساني</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-img">
+            <img src="images/child-care.png" alt="رعاية الأطفال" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon"><i class="fas fa-baby"></i></div>
+            <h3>رعاية الأطفال</h3>
+            <p>جليسات أطفال موثوقات بخبرة عملية، متابعة ومرافقة في المنزل أو المناسبات</p>
+            <a href="/payment?service=رعاية الأطفال" class="service-link">احجز وادفع الآن <i class="fas fa-arrow-left"></i></a>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-img">
+            <img src="images/hospital.png" alt="رعاية كبار السن" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon"><i class="fas fa-heart"></i></div>
+            <h3>رعاية كبار السن</h3>
+            <p>مرافقون مؤهلون لخدمة الوالدين في المنزل، تذكير بالأدوية ودعم إنساني</p>
+            <a href="/payment?service=رعاية كبار السن" class="service-link">احجز وادفع الآن <i class="fas fa-arrow-left"></i></a>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-img">
+            <img src="images/elder-care.png" alt="مرافقة المستشفى" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon"><i class="fas fa-hospital"></i></div>
+            <h3>مرافقة المستشفى</h3>
+            <p>مرافقة آمنة من وإلى المستشفى، متابعة أثناء الانتظار مع حرص على خصوصية المريض</p>
+            <a href="/payment?service=مرافقة المستشفى" class="service-link">احجز وادفع الآن <i class="fas fa-arrow-left"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== EXTENDED SERVICES ===== -->
+  <section class="ext-services">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">المزيد من خدماتنا</span>
+        <h2>خدمات متنوعة لكل احتياج</h2>
+      </div>
+      <div class="ext-grid">
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="0">
+          <div class="ext-icon"><i class="fas fa-child"></i></div>
+          <h4>جليسة أطفال في المنزل</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="50">
+          <div class="ext-icon"><i class="fas fa-clock"></i></div>
+          <h4>رعاية أثناء دوام الأم</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="ext-icon"><i class="fas fa-bed"></i></div>
+          <h4>مرافقة تنويم</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="150">
+          <div class="ext-icon"><i class="fas fa-running"></i></div>
+          <h4>برامج وأنشطة للأطفال</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="ext-icon"><i class="fas fa-plane"></i></div>
+          <h4>دِبرة في السفر</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="250">
+          <div class="ext-icon"><i class="fas fa-user-nurse"></i></div>
+          <h4>مرافقة مريض بالمستشفى</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="ext-icon"><i class="fas fa-ring"></i></div>
+          <h4>أعراس ومناسبات خاصة</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="350">
+          <div class="ext-icon"><i class="fas fa-home"></i></div>
+          <h4>مدبرة منزل</h4>
+        </div>
+        <div class="ext-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="ext-icon"><i class="fas fa-pills"></i></div>
+          <h4>متابعة التغذية والعلاج</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container about-container">
+      <div class="about-images" data-aos="fade-right">
+        <div class="about-img-main">
+          <img src="images/team1.jpg" alt="فريق دِبرة" />
+        </div>
+        <div class="about-img-secondary">
+          <img src="images/team2.jpg" alt="فريق دِبرة" />
+        </div>
+        <div class="about-badge-float">
+          <i class="fas fa-shield-alt"></i>
+          <span>موثوق ومعتمد</span>
+        </div>
+      </div>
+      <div class="about-content" data-aos="fade-left">
+        <span class="section-tag">من نحن</span>
+        <h2>دِبرة.. رعاية تنبض بالثقة</h2>
+        <p class="about-lead">هي ليست جلوسًا مع طفل، بل احتواءٌ لحياته الصغيرة بكل تفاصيلها. وليست مساعدة لكبيرة سن، بل تقدير لعمرٍ أمضى حياته بالعطاء.</p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon"><i class="fas fa-leaf"></i></div>
+            <div>
+              <h4>الرعاية الأصيلة</h4>
+              <p>نقدم رعاية حقيقية تنبع من القيم والمبادئ</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <h4>الثقة المتبادلة</h4>
+              <p>نبني علاقات قائمة على الصدق والشفافية</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="fas fa-lock"></i></div>
+            <div>
+              <h4>الأمان في التفاصيل</h4>
+              <p>نهتم بكل تفصيلة صغيرة لضمان سلامة عائلتك</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="fas fa-flag"></i></div>
+            <div>
+              <h4>كوادر وطنية</h4>
+              <p>نفتخر بكوادرنا السعودية المدربة والمختارة بعناية</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== TESTIMONIAL ===== -->
+  <section class="testimonial">
+    <div class="testimonial-bg">
+      <img src="images/pattern.png" alt="" />
+    </div>
+    <div class="container">
+      <div class="testimonial-card" data-aos="zoom-in">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimonial-text">"مع دِبرة قدرت أطلع من البيت وأنا مطمئنة إن أطفالي في أيد أمينة. المتابعة مستمرة، والالتزام بالوقت عالٍ، وحسن التعامل يخلّيني أكرر التجربة بدون تردد."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="images/team5.jpg" alt="أم نورة" />
+          </div>
+          <div>
+            <strong>أم نورة</strong>
+            <span>أم لطفلين – من عملاء دِبرة</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== WHY US ===== -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">لماذا دِبرة؟</span>
+        <h2>لأن راحة عائلتك ما تتحمّل التجربة</h2>
+        <p>في دِبرة نركز على الجودة، الأمان، والالتزام قبل أي شيء</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="why-img">
+            <img src="images/team3.jpg" alt="كوادر موثوقة" />
+          </div>
+          <div class="why-body">
+            <div class="why-num">01</div>
+            <h3>كوادر موثوقة ومختارة بعناية</h3>
+            <p>كل موظفة في دِبرة تمثّل قيم الأمان والمصداقية والالتزام؛ نختار كوادر وطنية، ندربهن، ونتابع أداءهن عشان تكون الأم مطمئنة في كل لحظة.</p>
+          </div>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="why-img">
+            <img src="images/team4.jpg" alt="الالتزام بالوقت" />
+          </div>
+          <div class="why-body">
+            <div class="why-num">02</div>
+            <h3>التزام بالوقت والمتابعة</h3>
+            <p>من أول اتصال وحتى آخر لحظة في اليوم، نكون حاضرين بابتسامة وتواصل واضح، وتحديثات مستمرة عن حالة الطفل أو كبير السن.</p>
+          </div>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-img">
+            <img src="images/team6.jpg" alt="مرافقة مستشفى" />
+          </div>
+          <div class="why-body">
+            <div class="why-num">03</div>
+            <h3>مرافقة مستشفى متميزة</h3>
+            <p>نوفّر مرافقات للمستشفى يخففن عن الأسرة عبء الانتظار والإجراءات، ويهتممن براحة المريض واحترام خصوصيته والتواصل مع العائلة أولًا بأول.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== PACKAGES ===== -->
+  <section class="packages" id="packages">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">الباقات</span>
+        <h2>باقات وعقود مرنة تناسب احتياجك</h2>
+        <p>اختر بين حجز يومي لاحتياج سريع، أو عقود شهرية/سنوية ثابتة مع أسعار مميزة</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="package-icon">
+            <img src="uploads/extra/daily.png" alt="يومي" />
+          </div>
+          <h3>يومي</h3>
+          <p>مثالي للاحتياجات العاجلة والمؤقتة</p>
+          <ul>
+            <li><i class="fas fa-check"></i> حجز فوري</li>
+            <li><i class="fas fa-check"></i> مرونة كاملة</li>
+            <li><i class="fas fa-check"></i> بدون التزام</li>
+          </ul>
+          <a href="/payment?package=يومي" class="btn btn-outline">احجز الآن</a>
+          <a href="/payment?package=يومي" class="btn-pay-now"><i class="fas fa-credit-card"></i> ادفع 150 ريال</a>
+        </div>
+        <div class="package-card featured" data-aos="fade-up" data-aos-delay="150">
+          <div class="package-badge">الأكثر طلبًا</div>
+          <div class="package-icon">
+            <img src="uploads/extra/weekly.png" alt="أسبوعي" />
+          </div>
+          <h3>أسبوعي</h3>
+          <p>للعائلات التي تحتاج رعاية منتظمة</p>
+          <ul>
+            <li><i class="fas fa-check"></i> سعر مميز</li>
+            <li><i class="fas fa-check"></i> نفس الكادر</li>
+            <li><i class="fas fa-check"></i> متابعة أسبوعية</li>
+          </ul>
+          <a href="/payment?package=أسبوعي" class="btn btn-primary">احجز الآن</a>
+          <a href="/payment?package=أسبوعي" class="btn-pay-now"><i class="fas fa-credit-card"></i> ادفع 800 ريال</a>
+        </div>
+        <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="package-icon">
+            <img src="uploads/extra/monthly.png" alt="شهري" />
+          </div>
+          <h3>شهري / سنوي</h3>
+          <p>للعائلات التي تبحث عن استمرارية وضمان</p>
+          <ul>
+            <li><i class="fas fa-check"></i> أفضل الأسعار</li>
+            <li><i class="fas fa-check"></i> ضمان استمرارية الكادر</li>
+            <li><i class="fas fa-check"></i> أولوية في الحجز</li>
+          </ul>
+          <a href="/payment?package=شهري" class="btn btn-outline">احجز الآن</a>
+          <a href="/payment?package=شهري" class="btn-pay-now"><i class="fas fa-credit-card"></i> ادفع 2,500 ريال</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">معرض الصور</span>
+        <h2>نمنح الأمان ونصنع الثقة، بأيدي سعودية</h2>
+      </div>
+      <div class="gallery-grid" data-aos="fade-up">
+        <div class="gallery-item large"><img src="images/team7.jpg" alt="دِبرة" /></div>
+        <div class="gallery-item"><img src="images/team8.jpg" alt="دِبرة" /></div>
+        <div class="gallery-item"><img src="images/team1.jpg" alt="دِبرة" /></div>
+        <div class="gallery-item"><img src="images/team2.jpg" alt="دِبرة" /></div>
+        <div class="gallery-item large"><img src="images/team3.jpg" alt="دِبرة" /></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== PAYMENT SECTION ===== -->
+  <section class="payment-section" id="payment">
+    <div class="container">
+      <div class="payment-section-inner">
+        <div class="payment-section-content" data-aos="fade-right">
+          <span class="section-tag" style="background: rgba(255,255,255,0.2); color: #fff;">الدفع الإلكتروني</span>
+          <h2>ادفع بأمان عبر نيوليب</h2>
+          <p>نوفر لك تجربة دفع سلسة وآمنة عبر بوابة نيوليب المرخصة من البنك المركزي السعودي (ساما). ادفع بطاقتك أو عبر مدى أو Apple Pay.</p>
+          <div class="payment-features">
+            <div class="payment-feature">
+              <i class="fas fa-shield-alt"></i>
+              <span>تشفير SSL 256-bit لحماية بياناتك</span>
+            </div>
+            <div class="payment-feature">
+              <i class="fas fa-bolt"></i>
+              <span>معالجة فورية للمدفوعات</span>
+            </div>
+            <div class="payment-feature">
+              <i class="fas fa-undo"></i>
+              <span>إمكانية الاسترداد خلال 24 ساعة</span>
+            </div>
+            <div class="payment-feature">
+              <i class="fas fa-mobile-alt"></i>
+              <span>تأكيد فوري برسالة نصية</span>
+            </div>
+          </div>
+          <a href="/payment" class="btn btn-primary btn-lg" style="background: #fff; color: #228b64; border: none;">
+            <i class="fas fa-credit-card"></i> ابدأ الدفع الآن
+          </a>
+          <div class="neoleap-trust-badge">
+            <i class="fas fa-certificate"></i>
+            <p>مدعوم بواسطة <strong>نيوليب</strong> — مرخص من البنك المركزي السعودي (ساما) رقم الترخيص: 40000002</p>
+          </div>
+        </div>
+        <div class="payment-methods-display" data-aos="fade-left">
+          <h4>طرق الدفع المقبولة</h4>
+          <div class="payment-methods-grid">
+            <div class="payment-method-card">
+              <div class="method-icon" style="color: #004f9f;">💳</div>
+              <div class="method-name" style="color: #004f9f;">مدى</div>
+            </div>
+            <div class="payment-method-card">
+              <div class="method-icon" style="color: #1a1f71;">💳</div>
+              <div class="method-name" style="color: #1a1f71;">Visa</div>
+            </div>
+            <div class="payment-method-card">
+              <div class="method-icon" style="color: #eb001b;">💳</div>
+              <div class="method-name" style="color: #eb001b;">Mastercard</div>
+            </div>
+            <div class="payment-method-card">
+              <div class="method-icon">🍎</div>
+              <div class="method-name">Apple Pay</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+            <div style="background: rgba(255,255,255,0.15); border-radius: 10px; padding: 15px; color: #fff;">
+              <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 5px;">neo<span style="color: rgba(255,255,255,0.7);">leap</span></div>
+              <div style="font-size: 0.75rem; opacity: 0.8;">بوابة الدفع الإلكتروني</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== MISSION ===== -->
+  <section class="mission">
+    <div class="mission-bg">
+      <img src="images/pattern.png" alt="" />
+    </div>
+    <div class="container mission-container">
+      <div class="mission-content" data-aos="fade-right">
+        <span class="section-tag light">رسالتنا</span>
+        <h2>أن تكون دِبرة الوجه السعودي الأول في مجال الرعاية</h2>
+        <p>نسعى لأن نكون الخيار الأول والأكثر ثقة لكل عائلة سعودية تبحث عن رعاية حقيقية تجمع بين الاحترافية والدفء الإنساني.</p>
+        <a href="/payment" class="btn btn-primary btn-lg">ابدأ مع دِبرة</a>
+      </div>
+      <div class="mission-image" data-aos="fade-left">
+        <img src="images/team4.jpg" alt="رسالة دِبرة" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== REGISTRATION SECTION ===== -->
+  <section class="registration-section" id="register">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">سجّل الآن</span>
+        <h2>استمارات التسجيل</h2>
+        <p>اختر نوع التسجيل المناسب وأكمل بياناتك للحصول على أفضل رعاية</p>
+      </div>
+      <div class="registration-cards" data-aos="fade-up">
+        <a class='reg-card' href='/register-child'>
+          <div class="reg-card-icon"><i class="fas fa-baby"></i></div>
+          <h3>تسجيل طفل</h3>
+          <p>سجّل طفلك واحصل على رعاية متخصصة من كوادر وطنية مدرّبة</p>
+          <span class="reg-card-btn">ابدأ التسجيل <i class="fas fa-arrow-left"></i></span>
+        </a>
+        <a class='reg-card' href='/register-elderly'>
+          <div class="reg-card-icon elderly"><i class="fas fa-heart"></i></div>
+          <h3>تسجيل كبيرة السن</h3>
+          <p>قدّمي الرعاية اللائقة لوالدتك مع فريق دِبرة المتخصص والموثوق</p>
+          <span class="reg-card-btn">ابدأ التسجيل <i class="fas fa-arrow-left"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== BOOKING FORM ===== -->
+  <section class="booking" id="book">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">احجز الآن</span>
+        <h2>ابدأ رحلتك مع دِبرة</h2>
+        <p>أرسل طلبك وسيتواصل معك فريقنا في أقرب وقت</p>
+      </div>
+      <div class="booking-wrapper" data-aos="fade-up">
+        <form class="booking-form" id="bookingForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>الاسم الكريم</label>
+              <input type="text" placeholder="أدخل اسمك" required />
+            </div>
+            <div class="form-group">
+              <label>رقم الجوال</label>
+              <input type="tel" placeholder="05XXXXXXXX" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>نوع الخدمة</label>
+              <select required>
+                <option value="">اختر الخدمة</option>
+                <option>رعاية الأطفال</option>
+                <option>رعاية كبار السن</option>
+                <option>مرافقة المستشفى</option>
+                <option>مدبرة منزل</option>
+                <option>أعراس ومناسبات</option>
+                <option>دِبرة في السفر</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>نوع الباقة</label>
+              <select required>
+                <option value="">اختر الباقة</option>
+                <option>يومي</option>
+                <option>أسبوعي</option>
+                <option>شهري</option>
+                <option>سنوي</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>ملاحظات إضافية</label>
+            <textarea placeholder="أي تفاصيل أو متطلبات خاصة..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-full">
+            <i class="fas fa-paper-plane"></i> إرسال الطلب
+          </button>
+
+          <div class="form-divider">أو</div>
+
+          <a href="/payment" class="btn-pay-direct">
+            <i class="fas fa-credit-card"></i> ادفع الآن عبر نيوليب
+          </a>
+        </form>
+        <div class="booking-info">
+          <h3>تواصل معنا مباشرة</h3>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <span>اتصل بنا</span>
+              <strong>966+ 53 597 7511</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <span>واتساب</span>
+              <strong>966+ 53 597 7511</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <span>البريد الإلكتروني</span>
+              <strong>info@dibrah.net</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <span>الموقع</span>
+              <strong>الرياض، المملكة العربية السعودية</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <span>أوقات الخدمة</span>
+              <strong>خدمة متاحة 24/7</strong>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="contact">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="دِبرة" class="footer-logo" />
+          <p>رعاية متكاملة تجمع بين اللطف والالتزام، لتصل لكل بيت بأمان وطمأنينة.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#packages">الباقات</a></li>
+            <li><a href="#book">احجز الآن</a></li>
+            <li><a href='/payment'><i class="fas fa-credit-card"></i> ادفع الآن</a></li>
+            <li><a href='/register-child'>تسجيل طفل</a></li>
+            <li><a href='/register-elderly'>تسجيل كبيرة السن</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>خدماتنا</h4>
+          <ul>
+            <li><a href="#services">رعاية الأطفال</a></li>
+            <li><a href="#services">رعاية كبار السن</a></li>
+            <li><a href="#services">مرافقة المستشفى</a></li>
+            <li><a href="#services">مدبرة منزل</a></li>
+            <li><a href="#services">دِبرة في السفر</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>قانوني</h4>
+          <ul>
+            <li><a href='/terms'>الشروط والأحكام</a></li>
+            <li><a href='/privacy'>سياسة الخصوصية</a></li>
+            <li><a href='/customer-protection'>مبادئ حماية العملاء</a></li>
+            <li><a href='/customer-guide'>دليل العملاء</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>اشترك في نشرتنا</h4>
+          <p>احصل على أحدث العروض والأخبار</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="بريدك الإلكتروني" />
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>جميع الحقوق محفوظة دِبرة رعاية &copy; 2026</p>
+        <div class="footer-made">
+          <p>صُنع بكل ❤️ في المملكة العربية السعودية</p>
+          <img src="images/saudi-made.png" alt="Saudi Made" class="saudi-made-logo" />
+        </div>
+        <div class="footer-legal-links">
+          <a href='/terms'>الشروط والأحكام</a>
+          <a href='/privacy'>سياسة الخصوصية</a>
+          <a href='/customer-protection'>حماية العملاء</a>
+          <a href='/customer-guide'>دليل العملاء</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/966535977511" class="whatsapp-float" target="_blank" aria-label="واتساب">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="للأعلى">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

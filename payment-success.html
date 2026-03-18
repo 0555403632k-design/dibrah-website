@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دِبرة | تمت عملية الدفع بنجاح</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .success-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+      padding: 40px 20px;
+    }
+    .success-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(34,139,100,0.15);
+    }
+    .success-animation {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #228b64, #1a6b4a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      animation: bounceIn 0.6s ease;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .success-animation i { font-size: 2.5rem; color: #fff; }
+    .success-card h1 { font-size: 1.8rem; color: #1a3a2a; margin-bottom: 10px; }
+    .success-card p { color: #666; margin-bottom: 25px; line-height: 1.7; }
+    .ref-box {
+      background: #f0f8f4;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .ref-box span { font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px; }
+    .ref-box strong { font-size: 1.3rem; color: #228b64; font-weight: 800; }
+    .success-actions { display: flex; gap: 12px; flex-direction: column; }
+    .btn-home {
+      background: linear-gradient(135deg, #228b64, #1a6b4a);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+    .btn-home:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,139,100,0.4); }
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .neoleap-footer {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #999;
+      font-size: 0.8rem;
+    }
+    .neoleap-name { font-weight: 800; color: #228b64; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div class="success-page">
+    <div class="success-card">
+      <div class="success-animation">
+        <i class="fas fa-check"></i>
+      </div>
+      <h1>تمت عملية الدفع بنجاح!</h1>
+      <p>شكراً لثقتك بدِبرة. تم استلام دفعتك وسيتواصل معك فريقنا خلال 24 ساعة لتأكيد الحجز.</p>
+      <div class="ref-box">
+        <span>رقم المرجع</span>
+        <strong id="refNum">—</strong>
+      </div>
+      <div class="success-actions">
+        <a href="/" class="btn-home"><i class="fas fa-home"></i> العودة للرئيسية</a>
+        <a href="https://wa.me/966535977511" class="btn-whatsapp" target="_blank">
+          <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+        </a>
+      </div>
+      <div class="neoleap-footer">
+        <i class="fas fa-shield-alt" style="color: #228b64;"></i>
+        <span>مدعوم بواسطة</span>
+        <span class="neoleap-name">neoLeap</span>
+        <span>| مرخص من ساما</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Extract reference number from URL
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref') || 'DBR-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 90000 + 10000);
+    document.getElementById('refNum').textContent = ref;
+  </script>
+</body>
+</html>
