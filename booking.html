@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دِبرة | احجز الآن</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: linear-gradient(135deg, #f0faf5 0%, #e6f4ee 100%);
+      min-height: 100vh;
+      color: #1a3a2a;
+    }
+
+    /* ===== HEADER ===== */
+    .page-header {
+      background: #fff;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      padding: 16px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #228b64;
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+    .logo span { color: #1a3a2a; }
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0faf5;
+      border: 1px solid #c8e8d8;
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      color: #228b64;
+      font-weight: 600;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .page-title h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #1a3a2a;
+      margin-bottom: 8px;
+    }
+    .page-title p {
+      color: #666;
+      font-size: 1rem;
+    }
+    .page-title .tag {
+      display: inline-block;
+      background: rgba(34,139,100,0.1);
+      color: #228b64;
+      padding: 5px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    /* ===== STEPS BAR ===== */
+    .steps-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 35px;
+      gap: 0;
+    }
+    .step-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+      background: #e0ede7;
+      color: #999;
+      transition: all 0.4s;
+      border: 3px solid #e0ede7;
+    }
+    .step-node.active .step-circle {
+      background: #228b64;
+      color: #fff;
+      border-color: #228b64;
+      box-shadow: 0 4px 14px rgba(34,139,100,0.4);
+    }
+    .step-node.done .step-circle {
+      background: #228b64;
+      color: #fff;
+      border-color: #228b64;
+    }
+    .step-node.done .step-circle::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+    .step-node.done .step-num { display: none; }
+    .step-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #aaa;
+      white-space: nowrap;
+    }
+    .step-node.active .step-label { color: #228b64; }
+    .step-node.done .step-label { color: #228b64; }
+    .step-line {
+      width: 80px; height: 3px;
+      background: #e0ede7;
+      margin-bottom: 22px;
+      transition: background 0.4s;
+    }
+    .step-line.done { background: #228b64; }
+    @media (max-width: 480px) { .step-line { width: 40px; } }
+
+    /* ===== CARD ===== */
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+      border: 1px solid #e8f0ec;
+      overflow: hidden;
+    }
+    .card-body { padding: 35px 40px; }
+    @media (max-width: 600px) { .card-body { padding: 25px 20px; } }
+
+    /* ===== FORM STEPS ===== */
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-heading {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid #f0f8f4;
+    }
+    .step-heading .icon {
+      width: 46px; height: 46px;
+      background: rgba(34,139,100,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: #228b64;
+    }
+    .step-heading h2 { font-size: 1.25rem; font-weight: 800; color: #1a3a2a; }
+    .step-heading p { font-size: 0.85rem; color: #888; margin-top: 2px; }
+
+    /* ===== SERVICE GRID ===== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+    @media (max-width: 600px) { .service-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .service-card {
+      border: 2px solid #e8f0ec;
+      border-radius: 14px;
+      padding: 18px 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s;
+      background: #fafffe;
+    }
+    .service-card:hover { border-color: #228b64; background: #f0faf5; transform: translateY(-2px); }
+    .service-card.selected {
+      border-color: #228b64;
+      background: rgba(34,139,100,0.07);
+      box-shadow: 0 4px 14px rgba(34,139,100,0.15);
+    }
+    .service-card .svc-icon {
+      width: 52px; height: 52px;
+      background: rgba(34,139,100,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 1.4rem; color: #228b64;
+      transition: all 0.25s;
+    }
+    .service-card.selected .svc-icon { background: #228b64; color: #fff; }
+    .service-card .svc-name { font-size: 0.88rem; font-weight: 700; color: #1a3a2a; }
+    .service-card .svc-price { font-size: 0.78rem; color: #888; margin-top: 3px; }
+
+    /* ===== PACKAGES ===== */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+    @media (max-width: 500px) { .packages-grid { grid-template-columns: 1fr; } }
+
+    .pkg-card {
+      border: 2px solid #e8f0ec;
+      border-radius: 14px;
+      padding: 20px 15px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s;
+      position: relative;
+      background: #fafffe;
+    }
+    .pkg-card:hover { border-color: #228b64; transform: translateY(-2px); }
+    .pkg-card.selected {
+      border-color: #228b64;
+      background: rgba(34,139,100,0.07);
+      box-shadow: 0 4px 14px rgba(34,139,100,0.15);
+    }
+    .pkg-card .popular-tag {
+      position: absolute;
+      top: -11px; left: 50%; transform: translateX(-50%);
+      background: #228b64;
+      color: #fff;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pkg-card .pkg-name { font-size: 1rem; font-weight: 800; color: #1a3a2a; margin-bottom: 8px; }
+    .pkg-card .pkg-price {
+      font-size: 1.8rem; font-weight: 900; color: #228b64;
+      line-height: 1;
+    }
+    .pkg-card .pkg-currency { font-size: 0.85rem; color: #888; }
+    .pkg-card .pkg-period { font-size: 0.78rem; color: #aaa; margin-top: 4px; }
+
+    /* ===== FORM FIELDS ===== */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem; font-weight: 700;
+      color: #1a3a2a; margin-bottom: 8px;
+    }
+    .form-group label .req { color: #e53e3e; margin-right: 2px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid #e8f0ec;
+      border-radius: 12px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      color: #1a3a2a;
+      background: #fafffe;
+      transition: all 0.25s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #228b64;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(34,139,100,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    /* ===== DATE/TIME ===== */
+    .date-time-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) { .date-time-row { grid-template-columns: 1fr; } }
+
+    /* ===== SUMMARY CARD ===== */
+    .summary-box {
+      background: linear-gradient(135deg, #f0faf5, #e6f4ee);
+      border: 2px solid #c8e8d8;
+      border-radius: 16px;
+      padding: 22px 25px;
+      margin-bottom: 25px;
+    }
+    .summary-box h3 {
+      font-size: 1rem; font-weight: 800;
+      color: #1a3a2a; margin-bottom: 15px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .summary-box h3 i { color: #228b64; }
+    .summary-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed #c8e8d8;
+      font-size: 0.9rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row .lbl { color: #666; }
+    .summary-row .val { font-weight: 700; color: #1a3a2a; }
+    .summary-total {
+      background: #228b64;
+      color: #fff;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 15px;
+    }
+    .summary-total .lbl { font-size: 1rem; font-weight: 600; }
+    .summary-total .amount { font-size: 1.6rem; font-weight: 900; }
+    .summary-total .sar { font-size: 0.85rem; opacity: 0.85; }
+
+    /* ===== PAYMENT SECTION ===== */
+    .payment-methods {
+      display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .pm-btn {
+      flex: 1; min-width: 100px;
+      padding: 12px 10px;
+      border: 2px solid #e8f0ec;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s;
+      background: #fff;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+      color: #666;
+    }
+    .pm-btn:hover { border-color: #228b64; color: #228b64; }
+    .pm-btn.active { border-color: #228b64; background: rgba(34,139,100,0.07); color: #228b64; }
+    .pm-btn i { display: block; font-size: 1.3rem; margin-bottom: 5px; }
+
+    .security-note {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: #f0faf5;
+      border: 1px solid #c8e8d8;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .security-note i { color: #228b64; font-size: 1.1rem; margin-top: 2px; }
+    .security-note p { font-size: 0.82rem; color: #555; line-height: 1.6; }
+    .security-note strong { color: #228b64; }
+
+    /* ===== BUTTONS ===== */
+    .btn-row { display: flex; gap: 12px; margin-top: 10px; }
+    .btn-back {
+      padding: 14px 24px;
+      border: 2px solid #e8f0ec;
+      border-radius: 12px;
+      background: #fff;
+      color: #228b64;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-back:hover { background: #f0faf5; border-color: #228b64; }
+    .btn-next {
+      flex: 1;
+      padding: 15px 24px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #228b64, #1a6b4a);
+      color: #fff;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.05rem; font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 0 4px 16px rgba(34,139,100,0.35);
+    }
+    .btn-next:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(34,139,100,0.45); }
+    .btn-next:active { transform: translateY(0); }
+    .btn-next:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* ===== PAY BUTTON ===== */
+    .btn-pay {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #228b64, #1a6b4a);
+      color: #fff;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.15rem; font-weight: 900;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      box-shadow: 0 5px 20px rgba(34,139,100,0.4);
+      margin-top: 10px;
+    }
+    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(34,139,100,0.5); }
+    .btn-pay .amount-badge {
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 1rem;
+    }
+
+    /* ===== NEOLEAP BADGE ===== */
+    .neoleap-footer {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-top: 18px; flex-wrap: wrap;
+    }
+    .neoleap-footer .item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; color: #999;
+    }
+    .neoleap-footer .item i { color: #228b64; }
+    .nl-logo { font-weight: 900; font-size: 1rem; color: #228b64; }
+    .nl-logo em { color: #1a3a2a; font-style: normal; font-size: 0.8rem; }
+    .separator { color: #ddd; }
+
+    /* ===== LOADING OVERLAY ===== */
+    .loading-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(255,255,255,0.95);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 20px;
+    }
+    .loading-overlay.show { display: flex; }
+    .spinner {
+      width: 64px; height: 64px;
+      border: 5px solid #e0ede7;
+      border-top-color: #228b64;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-overlay p { font-size: 1.05rem; color: #228b64; font-weight: 700; }
+
+    /* ===== ERROR ===== */
+    .error-box {
+      display: none;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #c53030;
+      font-size: 0.9rem;
+      margin-top: 14px;
+      align-items: center; gap: 10px;
+    }
+    .error-box.show { display: flex; }
+
+    /* ===== WHATSAPP ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      width: 54px; height: 54px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: #fff;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      text-decoration: none;
+      z-index: 99;
+      transition: all 0.25s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+
+    /* ===== HIDDEN FORM ===== */
+    #neoleapForm { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <p id="loadingText">جارٍ تحويلك لبوابة الدفع...</p>
+</div>
+
+<!-- Header -->
+<header class="page-header">
+  <a href="https://stunning-cuchufli-988762.netlify.app" class="logo">دِ<span>برة</span></a>
+  <div class="header-badge">
+    <i class="fas fa-lock" style="font-size:0.75rem;"></i>
+    دفع آمن عبر نيوليب
+  </div>
+</header>
+
+<!-- Main -->
+<main class="main">
+
+  <div class="page-title">
+    <span class="tag"><i class="fas fa-calendar-check"></i> احجز الآن</span>
+    <h1>احجز خدمتك مع دِبرة</h1>
+    <p>أكمل النموذج وادفع بأمان عبر بوابة نيوليب المعتمدة</p>
+  </div>
+
+  <!-- Steps Bar -->
+  <div class="steps-bar">
+    <div class="step-node active" id="sn1">
+      <div class="step-circle"><span class="step-num">1</span></div>
+      <span class="step-label">الخدمة</span>
+    </div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step-node" id="sn2">
+      <div class="step-circle"><span class="step-num">2</span></div>
+      <span class="step-label">التفاصيل</span>
+    </div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step-node" id="sn3">
+      <div class="step-circle"><span class="step-num">3</span></div>
+      <span class="step-label">الدفع</span>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- ===== STEP 1: Service & Package ===== -->
+      <div class="form-step active" id="step1">
+        <div class="step-heading">
+          <div class="icon"><i class="fas fa-concierge-bell"></i></div>
+          <div>
+            <h2>اختر الخدمة والباقة</h2>
+            <p>حدد نوع الخدمة التي تحتاجها والباقة المناسبة لك</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>نوع الخدمة <span class="req">*</span></label>
+          <div class="service-grid">
+            <div class="service-card" onclick="pickService(this,'رعاية الأطفال','fas fa-baby')">
+              <div class="svc-icon"><i class="fas fa-baby"></i></div>
+              <div class="svc-name">رعاية الأطفال</div>
+              <div class="svc-price">من 150 ريال</div>
+            </div>
+            <div class="service-card" onclick="pickService(this,'رعاية كبار السن','fas fa-heart')">
+              <div class="svc-icon"><i class="fas fa-heart"></i></div>
+              <div class="svc-name">رعاية كبار السن</div>
+              <div class="svc-price">من 150 ريال</div>
+            </div>
+            <div class="service-card" onclick="pickService(this,'مرافقة المستشفى','fas fa-hospital')">
+              <div class="svc-icon"><i class="fas fa-hospital"></i></div>
+              <div class="svc-name">مرافقة المستشفى</div>
+              <div class="svc-price">من 150 ريال</div>
+            </div>
+            <div class="service-card" onclick="pickService(this,'مدبرة منزل','fas fa-home')">
+              <div class="svc-icon"><i class="fas fa-home"></i></div>
+              <div class="svc-name">مدبرة منزل</div>
+              <div class="svc-price">من 150 ريال</div>
+            </div>
+            <div class="service-card" onclick="pickService(this,'دِبرة في السفر','fas fa-plane')">
+              <div class="svc-icon"><i class="fas fa-plane"></i></div>
+              <div class="svc-name">دِبرة في السفر</div>
+              <div class="svc-price">من 150 ريال</div>
+            </div>
+            <div class="service-card" onclick="pickService(this,'أعراس ومناسبات','fas fa-ring')">
+              <div class="svc-icon"><i class="fas fa-ring"></i></div>
+              <div class="svc-name">أعراس ومناسبات</div>
+              <div class="svc-price">من 150 ريال</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>الباقة <span class="req">*</span></label>
+          <div class="packages-grid">
+            <div class="pkg-card" onclick="pickPackage(this,'يومي',1)">
+              <div class="pkg-name">يومي</div>
+              <div><span class="pkg-price">1</span> <span class="pkg-currency">ريال</span></div>
+              <div class="pkg-period">/ يوم</div>
+            </div>
+            <div class="pkg-card" onclick="pickPackage(this,'أسبوعي',1)">
+              <div class="popular-tag">الأكثر طلبًا</div>
+              <div class="pkg-name">أسبوعي</div>
+              <div><span class="pkg-price">1</span> <span class="pkg-currency">ريال</span></div>
+              <div class="pkg-period">/ أسبوع</div>
+            </div>
+            <div class="pkg-card" onclick="pickPackage(this,'شهري',1)">
+              <div class="pkg-name">شهري</div>
+              <div><span class="pkg-price">1</span> <span class="pkg-currency">ريال</span></div>
+              <div class="pkg-period">/ شهر</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="error-box" id="err1"><i class="fas fa-exclamation-circle"></i><span>يرجى اختيار الخدمة والباقة</span></div>
+
+        <div class="btn-row">
+          <button class="btn-next" onclick="goStep(2)">
+            التالي <i class="fas fa-arrow-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 2: Personal Details ===== -->
+      <div class="form-step" id="step2">
+        <div class="step-heading">
+          <div class="icon"><i class="fas fa-user-circle"></i></div>
+          <div>
+            <h2>بياناتك الشخصية</h2>
+            <p>أدخل معلوماتك لإتمام الحجز</p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>الاسم الكامل <span class="req">*</span></label>
+            <input type="text" id="fName" placeholder="مثال: أحمد محمد العمري" />
+          </div>
+          <div class="form-group">
+            <label>رقم الجوال <span class="req">*</span></label>
+            <input type="tel" id="fPhone" placeholder="05XXXXXXXX" maxlength="10" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>البريد الإلكتروني <span class="req">*</span></label>
+          <input type="email" id="fEmail" placeholder="example@email.com" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>المدينة <span class="req">*</span></label>
+            <select id="fCity">
+              <option value="">اختر المدينة</option>
+              <option>الرياض</option>
+              <option>جدة</option>
+              <option>مكة المكرمة</option>
+              <option>المدينة المنورة</option>
+              <option>الدمام</option>
+              <option>الخبر</option>
+              <option>الطائف</option>
+              <option>أبها</option>
+              <option>تبوك</option>
+              <option>أخرى</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>الحي / المنطقة</label>
+            <input type="text" id="fArea" placeholder="اسم الحي أو المنطقة" />
+          </div>
+        </div>
+
+        <div class="date-time-row">
+          <div class="form-group">
+            <label>تاريخ البدء <span class="req">*</span></label>
+            <input type="date" id="fDate" />
+          </div>
+          <div class="form-group">
+            <label>الوقت المفضل</label>
+            <select id="fTime">
+              <option value="">اختر الوقت</option>
+              <option>الصباح (8 - 12)</option>
+              <option>الظهر (12 - 4)</option>
+              <option>المساء (4 - 8)</option>
+              <option>الليل (8 - 12)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ملاحظات أو متطلبات خاصة</label>
+          <textarea id="fNotes" placeholder="أي تفاصيل إضافية تريد إبلاغنا بها..."></textarea>
+        </div>
+
+        <div class="error-box" id="err2"><i class="fas fa-exclamation-circle"></i><span id="err2txt">يرجى تعبئة جميع الحقول المطلوبة</span></div>
+
+        <div class="btn-row">
+          <button class="btn-back" onclick="goStep(1)"><i class="fas fa-arrow-right"></i> السابق</button>
+          <button class="btn-next" onclick="goStep(3)">التالي <i class="fas fa-arrow-left"></i></button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 3: Payment ===== -->
+      <div class="form-step" id="step3">
+        <div class="step-heading">
+          <div class="icon"><i class="fas fa-credit-card"></i></div>
+          <div>
+            <h2>مراجعة وإتمام الدفع</h2>
+            <p>راجع تفاصيل حجزك ثم انتقل لبوابة الدفع الآمنة</p>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary-box">
+          <h3><i class="fas fa-receipt"></i> ملخص الحجز</h3>
+          <div class="summary-row">
+            <span class="lbl">الخدمة</span>
+            <span class="val" id="sum-svc">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">الباقة</span>
+            <span class="val" id="sum-pkg">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">العميل</span>
+            <span class="val" id="sum-name">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">الجوال</span>
+            <span class="val" id="sum-phone">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">المدينة</span>
+            <span class="val" id="sum-city">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">تاريخ البدء</span>
+            <span class="val" id="sum-date">—</span>
+          </div>
+          <div class="summary-total">
+            <span class="lbl">المبلغ الإجمالي</span>
+            <div>
+              <span class="amount" id="sum-amount">1</span>
+              <span class="sar"> ريال</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-group">
+          <label>طريقة الدفع</label>
+          <div class="payment-methods">
+            <button class="pm-btn active" id="pm-card" onclick="setPM('card',this)">
+              <i class="fas fa-credit-card"></i> بطاقة بنكية
+            </button>
+            <button class="pm-btn" id="pm-mada" onclick="setPM('mada',this)">
+              <i class="fas fa-university"></i> مدى
+            </button>
+            <button class="pm-btn" id="pm-apple" onclick="setPM('apple',this)">
+              <i class="fab fa-apple"></i> Apple Pay
+            </button>
+          </div>
+        </div>
+
+        <!-- Security Note -->
+        <div class="security-note">
+          <i class="fas fa-shield-alt"></i>
+          <p>
+            ستنتقل إلى <strong>صفحة الدفع الآمنة لنيوليب</strong> المرخصة من البنك المركزي السعودي (ساما).
+            جميع بياناتك محمية بتشفير <strong>SSL 256-bit</strong> ولا يتم تخزين أي بيانات بطاقة على موقعنا.
+          </p>
+        </div>
+
+        <!-- Pay Button -->
+        <button class="btn-pay" id="payBtn" onclick="submitPayment()">
+          <i class="fas fa-lock"></i>
+          ادفع الآن عبر نيوليب
+          <span class="amount-badge" id="payAmountBadge">1 ريال</span>
+        </button>
+
+        <!-- NeoLeap Footer -->
+        <div class="neoleap-footer">
+          <div class="item"><i class="fas fa-shield-alt"></i> دفع آمن 100%</div>
+          <span class="separator">|</span>
+          <div class="item">مدعوم بـ <strong class="nl-logo" style="margin-right:4px;">neo<em>leap</em></strong></div>
+          <span class="separator">|</span>
+          <div class="item"><i class="fas fa-award"></i> مرخص من ساما</div>
+        </div>
+
+        <!-- Accepted Cards -->
+        <div style="text-align:center;margin-top:14px;">
+          <p style="font-size:0.75rem;color:#bbb;margin-bottom:8px;">طرق الدفع المقبولة</p>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+            <span style="background:#004f9f;color:#fff;padding:4px 12px;border-radius:6px;font-size:0.75rem;font-weight:800;">مدى</span>
+            <span style="background:#1a1f71;color:#fff;padding:4px 12px;border-radius:6px;font-size:0.75rem;font-weight:800;">Visa</span>
+            <span style="background:#eb001b;color:#fff;padding:4px 12px;border-radius:6px;font-size:0.75rem;font-weight:800;">Mastercard</span>
+            <span style="background:#000;color:#fff;padding:4px 12px;border-radius:6px;font-size:0.75rem;font-weight:800;">Apple Pay</span>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:20px;">
+          <button class="btn-back" onclick="goStep(2)"><i class="fas fa-arrow-right"></i> السابق</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- NeoLeap Hidden POST Form -->
+<form id="neoleapForm" method="POST" action="https://digitalpayments.neoleap.com.sa/pg/payment/hosted.htm">
+  <input type="hidden" name="tranportalId" id="nl_tranportalId" />
+  <input type="hidden" name="tranportalPassword" id="nl_tranportalPassword" />
+  <input type="hidden" name="terminalResourceKey" id="nl_terminalResourceKey" />
+  <input type="hidden" name="amt" id="nl_amt" />
+  <input type="hidden" name="trackId" id="nl_trackId" />
+  <input type="hidden" name="currencyCode" id="nl_currencyCode" value="682" />
+  <input type="hidden" name="langid" id="nl_langid" value="AR" />
+  <input type="hidden" name="responseURL" id="nl_responseURL" />
+  <input type="hidden" name="errorURL" id="nl_errorURL" />
+  <input type="hidden" name="udf1" id="nl_udf1" />
+  <input type="hidden" name="udf2" id="nl_udf2" />
+  <input type="hidden" name="udf3" id="nl_udf3" />
+  <input type="hidden" name="udf4" id="nl_udf4" />
+  <input type="hidden" name="udf5" id="nl_udf5" />
+</form>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/966535977511" class="wa-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // ===== NeoLeap Config =====
+  const NL_CONFIG = {
+    tranportalId: '4q60Klb8PWv8IUr',
+    tranportalPassword: 'f@Leg@56@EQO15s',
+    terminalResourceKey: '60401891093160401891093160401891',
+    purchaseURL: 'https://digitalpayments.neoleap.com.sa/pg/payment/hosted.htm',
+    currencyCode: '682', // SAR
+    langid: 'AR'
+  };
+
+  // ===== State =====
+  const S = {
+    service: '', package: '', amount: 1,
+    name: '', phone: '', email: '',
+    city: '', area: '', date: '', time: '', notes: '',
+    payMethod: 'card'
+  };
+
+  // ===== Step Navigation =====
+  function goStep(n) {
+    if (n > 1 && !validate(n - 1)) return;
+
+    // Update steps bar
+    for (let i = 1; i <= 3; i++) {
+      const node = document.getElementById('sn' + i);
+      node.classList.remove('active', 'done');
+      if (i < n) node.classList.add('done');
+      if (i === n) node.classList.add('active');
+    }
+    for (let i = 1; i <= 2; i++) {
+      const line = document.getElementById('sl' + i);
+      line.classList.toggle('done', i < n);
+    }
+
+    // Show step
+    document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+
+    // Fill summary on step 3
+    if (n === 3) fillSummary();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===== Validation =====
+  function validate(step) {
+    if (step === 1) {
+      if (!S.service || !S.package) {
+        document.getElementById('err1').classList.add('show');
+        return false;
+      }
+      document.getElementById('err1').classList.remove('show');
+      return true;
+    }
+    if (step === 2) {
+      const name  = document.getElementById('fName').value.trim();
+      const phone = document.getElementById('fPhone').value.trim();
+      const email = document.getElementById('fEmail').value.trim();
+      const city  = document.getElementById('fCity').value;
+      const date  = document.getElementById('fDate').value;
+
+      if (!name)  { showErr2('يرجى إدخال الاسم الكامل'); return false; }
+      if (!phone || phone.length < 10) { showErr2('يرجى إدخال رقم جوال صحيح (10 أرقام)'); return false; }
+      if (!email || !email.includes('@')) { showErr2('يرجى إدخال بريد إلكتروني صحيح'); return false; }
+      if (!city)  { showErr2('يرجى اختيار المدينة'); return false; }
+      if (!date)  { showErr2('يرجى تحديد تاريخ البدء'); return false; }
+
+      S.name  = name;
+      S.phone = phone;
+      S.email = email;
+      S.city  = city;
+      S.area  = document.getElementById('fArea').value.trim();
+      S.date  = date;
+      S.time  = document.getElementById('fTime').value;
+      S.notes = document.getElementById('fNotes').value.trim();
+
+      document.getElementById('err2').classList.remove('show');
+      return true;
+    }
+    return true;
+  }
+
+  function showErr2(msg) {
+    document.getElementById('err2txt').textContent = msg;
+    document.getElementById('err2').classList.add('show');
+  }
+
+  // ===== Pick Service =====
+  function pickService(el, name) {
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    S.service = name;
+  }
+
+  // ===== Pick Package =====
+  function pickPackage(el, name, price) {
+    document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    S.package = name;
+    S.amount = price;
+  }
+
+  // ===== Payment Method =====
+  function setPM(method, btn) {
+    S.payMethod = method;
+    document.querySelectorAll('.pm-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ===== Fill Summary =====
+  function fillSummary() {
+    document.getElementById('sum-svc').textContent   = S.service || '—';
+    document.getElementById('sum-pkg').textContent   = S.package || '—';
+    document.getElementById('sum-name').textContent  = S.name    || '—';
+    document.getElementById('sum-phone').textContent = S.phone   || '—';
+    document.getElementById('sum-city').textContent  = S.city    || '—';
+    document.getElementById('sum-date').textContent  = S.date    || '—';
+    document.getElementById('sum-amount').textContent = S.amount.toLocaleString('ar-SA');
+    document.getElementById('payAmountBadge').textContent = S.amount.toLocaleString('ar-SA') + ' ريال';
+  }
+
+  // ===== Submit to NeoLeap =====
+  function submitPayment() {
+    const btn = document.getElementById('payBtn');
+    btn.disabled = true;
+
+    // Generate unique Track ID
+    const trackId = 'DBR' + Date.now() + Math.floor(Math.random() * 9000 + 1000);
+
+    // Current page base URL for callbacks
+    const base = window.location.origin + window.location.pathname.replace('booking.html', '');
+    const responseURL = base + 'payment-response.html';
+    const errorURL    = base + 'payment-error.html';
+
+    // Fill NeoLeap form fields
+    document.getElementById('nl_tranportalId').value       = NL_CONFIG.tranportalId;
+    document.getElementById('nl_tranportalPassword').value = NL_CONFIG.tranportalPassword;
+    document.getElementById('nl_terminalResourceKey').value= NL_CONFIG.terminalResourceKey;
+    document.getElementById('nl_amt').value                = (S.amount).toFixed(3); // NeoLeap expects 3 decimals
+    document.getElementById('nl_trackId').value            = trackId;
+    document.getElementById('nl_currencyCode').value       = NL_CONFIG.currencyCode;
+    document.getElementById('nl_langid').value             = NL_CONFIG.langid;
+    document.getElementById('nl_responseURL').value        = responseURL;
+    document.getElementById('nl_errorURL').value           = errorURL;
+
+    // User data in UDF fields
+    document.getElementById('nl_udf1').value = S.name;
+    document.getElementById('nl_udf2').value = S.phone;
+    document.getElementById('nl_udf3').value = S.service + ' - ' + S.package;
+    document.getElementById('nl_udf4').value = S.email;
+    document.getElementById('nl_udf5').value = S.city + (S.date ? ' | ' + S.date : '');
+
+    // Save booking to localStorage for response page
+    localStorage.setItem('dibrah_booking', JSON.stringify({
+      trackId, service: S.service, package: S.package,
+      amount: S.amount, name: S.name, phone: S.phone,
+      email: S.email, city: S.city, date: S.date
+    }));
+
+    // Show loading then submit
+    document.getElementById('loadingOverlay').classList.add('show');
+    document.getElementById('loadingText').textContent = 'جارٍ تحويلك لبوابة نيوليب الآمنة...';
+
+    setTimeout(() => {
+      document.getElementById('neoleapForm').submit();
+    }, 1200);
+  }
+
+  // ===== Set min date to today =====
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('fDate').min = today;
+  });
+</script>
+
+</body>
+</html>
